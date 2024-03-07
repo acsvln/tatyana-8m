@@ -24,7 +24,7 @@ class DrawLine(Effect):
     def stop_frame(self):
         pass
 
-def scene_nature(screen, duration):
+def scene_nature_fish(screen, duration):
     path = Path()
     path.jump_to(screen.width, 10)
     path.move_straight_to(0, 10, 40)
