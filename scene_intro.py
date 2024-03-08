@@ -1,3 +1,4 @@
+from asciimatics.screen import Screen
 from asciimatics.scene import Scene
 from asciimatics.effects import Print, Effect
 from asciimatics.renderers import FigletText, StaticRenderer
@@ -5,82 +6,53 @@ from asciimatics.renderers import FigletText, StaticRenderer
 from utils import *
 from resources import *
 
-
-class DrawLine(Effect):
-    def __init__(self, screen, x1, y1, x2, y2):
-        super().__init__(screen)
-        self.x1 = x1
-        self.x2 = x2
-        self.y1 = y1
-        self.y2 = y2
-        # self.screen = screen
-
-    def _update(self, frame_no):
-        self.screen.move(self.x1, self.y1)
-        self.screen.draw(self.x2, self.y2, '0', )
-
-    def reset(self):
-        pass
-
-    def stop_frame(self):
-        pass
-
-
 def scene_intro(screen, duration):
-    xv_t = screen.width // 2 - textBlockWidth(tatyana) // 2
-    yv_t = 2
+    screen_center = screen.width // 2
 
-    xv_f = screen.width  // 2 - textBlockWidth(flower) // 2
-    yv_f = textBlockHeight(tatyana) + 1
+    x_t = screen_center - textBlockWidth(tatyana) // 2
+    y_t = 2
 
-    xv_8m = screen.width // 2 - 38
-    xv_8m1 = screen.width // 2 - 44
-    yv_8m = ( yv_f + textBlockHeight(flower) ) - 10
-    yv_8m1 = (yv_f + textBlockHeight(flower)) - 15
+    x_f = screen_center - textBlockWidth(flower) // 2
+    y_f = y_t + textBlockHeight(tatyana) - 6
 
-    outline_base_x=64
-    outline_base_y=36
+    x_8m = screen_center - 34
+    y_8m = y_f + textBlockHeight(flower) - 10
+    
+    x_8m8 = screen_center - 44
+    y_8m8 = y_f + textBlockHeight(flower) - 15
 
     effects = [
         Print(
             screen,
-            StaticRenderer([tatyana]),
-            x=xv_t,
-            y=yv_t
+            StaticRenderer([flower]),
+            x=x_f,
+            y=y_f,
+            colour=Screen.COLOUR_RED
         ),
         Print(
             screen,
-            StaticRenderer([flower]),
-            x=xv_f,
-            y=yv_f
+            StaticRenderer([tatyana]),
+            x=x_t,
+            y=y_t,
+            clear=True,
+            transparent=False,
+            colour=Screen.COLOUR_GREEN
         ),
         Print(
             screen,
             FigletText('8', font='doh'),
-            x=xv_8m1,
-            y=yv_8m1
+            x=x_8m8,
+            y=y_8m8,
+            colour=Screen.COLOUR_BLUE
         ),
         Print(
             screen,
-            FigletText('8 march', font='isometric4'),
-            x=xv_8m,
-            y=yv_8m,
+            FigletText('march', font='isometric4'),
+            x=x_8m,
+            y=y_8m,
             transparent=True,
-            clear=True
-        ),
-        DrawLine(
-            screen,
-            x1=outline_base_x,
-            y1=outline_base_y,
-            x2=outline_base_x,
-            y2=outline_base_y + 2
-        ),
-        DrawLine(
-            screen,
-            x1=outline_base_x,
-            y1=outline_base_y + 2,
-            x2=outline_base_x + 2,
-            y2=outline_base_y + 2
+            clear=True,
+            colour=Screen.COLOUR_CYAN
         )
     ]
 
