@@ -59,20 +59,20 @@ def scene_ussr(screen, duration):
         ),
         SimplePrint(
             screen,
-            screen.width // 2 - 17,
+            screen.width // 2 - 5,
             yy,
             "my congratulations to Τατιανα",
             Screen.COLOUR_CYAN
         ),
-        DrawLine(
-            screen,
-            xx,
-            yy,
-            xx,
-            yy-1,
-            colour=Screen.COLOUR_RED
-        ),
-        DrawLine(
+        # DrawLine( # начало
+        #     screen,
+        #     xx,
+        #     yy,
+        #     xx,
+        #     yy-1,
+        #     colour=Screen.COLOUR_RED
+        # ),
+        DrawLine( # линия
             screen,
             xx,
             yy - 1,
@@ -80,14 +80,14 @@ def scene_ussr(screen, duration):
             yy - 1,
             colour=Screen.COLOUR_RED
         ),
-        DrawLine(
-            screen,
-            xx + textBlockWidth(ussr_world) - 1,
-            yy - 1,
-            xx + textBlockWidth(ussr_world) - 1,
-            yy + 1,
-            colour=Screen.COLOUR_RED
-        )
+        # DrawLine( # конец
+        #     screen,
+        #     xx + textBlockWidth(ussr_world) - 1,
+        #     yy - 1,
+        #     xx + textBlockWidth(ussr_world) - 1,
+        #     yy + 1,
+        #     colour=Screen.COLOUR_RED
+        # )
     ]
 
     scene = Scene(effects, duration)
