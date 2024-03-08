@@ -10,11 +10,11 @@ from scene_ussr import *
 @ManagedScreen
 def run_the_show(screen=None):
     screen.play([
-        scene_intro(screen, 80),
+        scene_intro(screen, 40),
         scene_nature_fish(screen, 80),
         scene_nature_birds(screen, 80),
-        scene_commie(screen, 80),
-        scene_ussr(screen, 80)
+        scene_commie(screen, 50),
+        scene_ussr(screen, -1)
     ], stop_on_resize=False)
 
 
